@@ -13,20 +13,24 @@ import fabricator.Fabricator;
 public class ToDoDataFactory implements IDataFactory {
 	private static Words wd = Fabricator.words();
 	private static Calendar cd = Fabricator.calendar();
+	private static List<todo> todos = null;
 
 	@Override
-	public List getAll() {
-		// TODO Auto-generated method stub
-		List<todo> result  = new ArrayList<>();
-		for (int i =0; i<101; i++) {
-			result.add(new todo(wd.sentence(100),wd.paragraph(300),cd.randomDate().asDate(),cd.randomDate().asDate()));
+	public List<todo> getAll() {
+		if (todos == null) {
+			todos = new ArrayList<todo>();
+			for (int i = 1; i < 101; i++) {
+				todos.add(new todo(new Long(i), wd.sentence(100), wd.paragraph(300), cd.randomDate().asDate(),
+						cd.randomDate().asDate()));
+			}
+
 		}
-		return result;
-		
+		return todos;
+
 	}
 
 	@Override
-	public List searchByCriteria(HashMap criteria) {
+	public List<todo> searchByCriteria(HashMap criteria) {
 		// TODO Auto-generated method stub
 		return null;
 	}

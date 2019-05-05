@@ -12,8 +12,8 @@ public class ToDoDataFactoryTest {
 	@Test
 	public final void testGetAll() throws Exception {
 		// TODO
-		IDataFactory<?, ?> df = new ToDoDataFactory();
-		List<todo> list = (List<todo>) df.getAll();
+		IDataFactory df = new ToDoDataFactory();
+		List<todo> list = df.getAll();
 		Assert.assertEquals(100, list.size());
 
 	}
