@@ -18,4 +18,11 @@ public class ToDoDataFactoryTest {
 
 	}
 
+	@Test
+	public void testSearchById() throws Exception {
+		IDataFactory df = new ToDoDataFactory();
+		todo result = df.searchById(34);
+		Assert.assertEquals(34, result.getTodoId().intValue());
+	}
+
 }

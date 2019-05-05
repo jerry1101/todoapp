@@ -3,6 +3,7 @@ package com.example.demo.fakedata;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.models.todo;
 
@@ -43,8 +44,17 @@ public class ToDoDataFactory implements IDataFactory {
 
 	@Override
 	public void delete(Object entity) {
-		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public todo searchById(int id) {
+		if (todos == null) {
+			this.getAll();
+		}
+		
+		Optional<todo> result = todos.stream().filter(x -> x.getTodoId().intValue() == id).findFirst();
+		return result.isPresent()?result.get():new todo();
 	}
 
 }
